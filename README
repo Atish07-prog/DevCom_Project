@@ -1,0 +1,28 @@
+backend/setting.py
+1. rest_framework
+This refers to the Django REST Framework (DRF). It is the industry standard for building Web APIs with Django.
+
+What it does: It provides tools like Serializers (to convert database data to JSON), ViewSets, and built-in API browsers.
+
+Why use it: Without this, you would have to manually handle JSON parsing and response formatting for every single request.
+
+2. rest_framework_simplejwt
+This is an extension for DRF that handles JSON Web Token (JWT) Authentication.
+
+What it does: It allows users to log in and receive an access token. The client (like a React or Mobile app) sends this token back in the header of future requests to prove who they are.
+
+Why use it: It is more secure and scalable for "stateless" APIs than standard session-based login.
+
+3. corsheaders
+This refers to django-cors-headers, a library that manages Cross-Origin Resource Sharing (CORS).
+
+What it does: By default, browsers block a website (e.g., localhost:3000) from making requests to an API on a different domain (e.g., localhost:8000). This package tells the server which "origins" are allowed to talk to it.
+
+Why use it: You almost always need this if your frontend (React, Vue, Angular) is running on a different server/port than your Django backend.
+
+4. accounts
+This is likely a custom Django app created by the developer (you or your team).
+
+What it does: In Django, you organize code into "apps." An app named accounts usually handles everything related to users: custom User models, registration, profiles, and password resets.
+
+Why use it: It keeps your project organized by separating user logic from other features like "products" or "orders."

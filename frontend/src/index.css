@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+
+
+html{
+  font-size: 16px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+.credentials{
+  background-color: white;
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0rem;
+
+}
+.form h1{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login{
+ display: flex;
+  height: 100vh;
+}
+.welcome{
+  height: 100vh;
+  width: 50%;
+  background-color: #F9EADC;
+  font-family: "Inria Serif", serif;
+  font-weight: 400;
+  font-size: 2rem;
+  font-style: normal;
+
+}
+.features{
+  display: flex;
+  margin: 5%;
+  margin-top: 20%;
+}
+.webname{
+  margin:5%;
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+
+}
+
+.webname p{
+  padding: 0.5rem;
+}
+
+.welcometext{
+  margin: 5%;
+  margin-top: 10%;
+}
+
+.featureinfo{
+  margin-left: 0.2rem;
+  white-space: nowrap;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3px;
+  margin-right: 1.5rem;
+
+}
+
+.form{
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+
+/* transform: scale(1.1); */
+
+}
+.AccType{
+  background-color: #E8E8E8;
+  height: 3rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  padding: 0.2rem;
+  border-radius: 15px;
+
+}
+.AccType input{
+appearance: none;
+/* margin-right: 2rem; */
+
+}
+.AccType label{
+  height: 2.5rem;
+  width: 7.5rem;
+  font-size: 2rem;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  cursor: pointer;
+
+  color: #585656;
+
+}
+
+input[type="radio"]:checked + label{
+   height: 3rem;
+  width: 7.5rem;
+  font-size: 2rem;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+
+}
+
+.inputfields{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  margin-bottom: 0rem;
+  padding: 0.2rem;
+  border-radius: 10px;
+
+}
+.inputfields input{
+  width: 15rem;
+  height: 2rem;
+  border: solid #E8E8E8;
+  border-radius: 7px;
+  margin-bottom: 1rem;
+}
+.inputfields label{
+  color: #726d6d;
+  font-family: "Inter", sans-serif;
+}
+#remember-me{
+   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem;
+  margin-top: 0rem;
+  padding: 0.2rem;
+  font-family: "Inter", sans-serif;
+  color: #726d6d;
+
+
+}
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 20px;
+}
+.toggle input {
+ display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .slider {
+  background-color: #3852F9;
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(21px);
+}
+#loginbutton{
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+#loginbutton button{
+  align-self: center;
+  height: 3rem;
+  width: 10rem;
+  background-color: #3852F9;
+  font-family: "Inter", sans-serif;
+
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+
+}
+#signupbutton{
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+#signupbutton button{
+  align-self: center;
+  height: 3rem;
+  width: 10rem;
+  background-color: #3852F9;
+  font-family: "Inter", sans-serif;
+
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+
+}
+
+#forpass{
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: "Inter", sans-serif;
+  color: #3852F9;
+  text-decoration: none;
+
+}
+.signupandlogin{
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+
+}
+.signuploginlink{
+  font-family: "Inter", sans-serif;
+  color: #3852F9;
+
+
+}
+.serverrespond{
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: red;
+
+}
+.termandondition{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+   margin: 2.2rem;
+   margin-top: 0rem;
+   margin-bottom: 0rem;
+   padding: 0.2rem;
+   font-size: 0.85rem;
+   font-weight: 700;
+   font-family: "Instrument Sans", sans-serif;
+
+
+}
+
+
+#tandc{
+  font-size: 0.85rem;
+  color: #3852F9;
+  font-weight: 700;
+}
+
+.inputfields input.error {
+  border: 2px solid #FB272A;
+  outline: none;
+  margin-bottom: 0rem;
+}
+.inputfields p{
+
+  color: #FB272A;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.9rem;
+}
+#emptyfield{
+  margin: 2.2rem;
+  margin-top: 0rem;
+  padding: 0.2rem;
+   font-family: "Instrument Sans", sans-serif;
+   font-weight: 500;
+   color: #FB272A;
+}
+
+
+#tandcerror{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2.2rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+   padding: 0.2rem;
+   font-family: "Instrument Sans", sans-serif;
+   font-weight: 500;
+   font-size: 0.9rem;
+   color: #FB272A;
+
+
+}
