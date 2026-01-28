@@ -1,0 +1,88 @@
+.confirmation-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  padding: 40px 16px;
+}
+
+.confirmation-card {
+  background: white;
+  max-width: 520px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: #22c55e;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-card h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+
+.booking-details {
+  text-align: left;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.booking-details div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.booking-details span {
+  color: #666;
+}
+
+.booking-details strong {
+  color: #111;
+  font-weight: 600;
+}
+
+.email-note {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 28px;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #111;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.home-button:hover {
+  background: #000;
+}
