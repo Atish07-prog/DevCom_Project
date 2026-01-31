@@ -1,50 +1,51 @@
 from rest_framework import serializers
-from .models import User
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 User = get_user_model()
 
 
-# For the Sign-Up Page
 class RegisterSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(required=True)
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password', 'role')
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'role': {'required': False, 'default': 'customer'}
+        }
 
     def create(self, validated_data):
-        # Saves Name, Email, Password, and Role into ONE table row
-        user = User.objects.create_user(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            password=validated_data['password'],
-            role=validated_data.get('role', 'customer')
-        )
-        return user
+        # Ensure username exists (uses email if missing)
+        if not validated_data.get('username'):
+            validated_data['username'] = validated_data.get('email')
+
+        # create_user handles password hashing automatically
+        return User.objects.create_user(**validated_data)
 
 
-# For the Login Page
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """
+    Customizes the Login process so users can log in with their Email.
+    """
+
     def validate(self, attrs):
-        # 'username' here contains the email typed in React
-        login_input = attrs.get("username")
+        # We allow users to type their email into the 'username' field
+        email_input = attrs.get('username')
 
         try:
-            # Look for the user in the EMAIL column
-            user_obj = User.objects.get(email=login_input)
-            # Swap email for the real username (e.g., 'Chinmay') so Django can authenticate
-            attrs['username'] = user_obj.username
+            # Check if input is an email, then find corresponding username
+            user = User.objects.get(email=email_input)
+            attrs["username"] = user.username
         except User.DoesNotExist:
-            # If no email matches, continue as username (covers both cases)
             pass
 
-        return super().validate(attrs)
+        # Hand over to JWT to verify password and generate tokens
+        data = super().validate(attrs)
 
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        # Add custom data to the JWT token
-        token['username'] = user.username
-        token['role'] = user.role  # Helps React identify Admin vs User
-        return token
+        # Add user-specific info to the response for React to use
+        data['username'] = self.user.username
+        data['role'] = self.user.role
+
+        return data

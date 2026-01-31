@@ -1,0 +1,108 @@
+.page {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* NAVIGATION */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 8%;
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #cb202d;
+  cursor: pointer;
+}
+.logo img { height: 35px; margin-right: 10px; }
+
+.login-btn {
+  background: white;
+  border: 1px solid #cb202d;
+  color: #cb202d;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* HERO SECTION */
+.restaurant-header { padding: 40px 8%; background: white; text-align: left; }
+.restaurant-header h1 { font-size: 42px; font-weight: 800; margin: 0; color: #1c1c1c; }
+.restaurant-header p { color: #696969; font-size: 18px; margin: 10px 0 20px; }
+
+.book-btn {
+  background-color: #cb202d;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.book-btn:hover { background-color: #b71c1c; }
+
+/* GALLERY GRID - Fixed visibility issues */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 8%;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* MODAL OVERLAY - Fixes form positioning */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.booking-modal {
+  background: #fff; padding: 35px; border-radius: 16px;
+  width: 90%; max-width: 450px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.error-banner {
+  background: #fff5f5; color: #dc2626; padding: 12px;
+  border-radius: 8px; border: 1px solid #fecaca;
+  margin-bottom: 20px; font-weight: 600; text-align: center;
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #333; }
+.form-group input, .slot-picker {
+  width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;
+}
+
+.action-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+.confirm-btn { width: 100%; }
+.cancel-link { background: none; border: none; color: #666; text-decoration: underline; cursor: pointer; }

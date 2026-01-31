@@ -1,56 +1,57 @@
-import { Link } from "react-router-dom";
-const Home = () => {
-    return ( <><p>welcome to home page</p>
-        <Link to="/loginpage">Login Page</Link>
-        </>
-    );
+import "./home.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
+export default function Restaurant() {
+  const [showBooking, setShowBooking] = useState(false);
+  const { isLoggedIn, logout, user } = useAuth();
+  const navigate = useNavigate();
+
+  return (
+    <div className="page">
+      <div className="top-bar">
+        <div className="logo" onClick={() => navigate("/")}>🍽️ TableNest</div>
+        <input className="search" placeholder="Search for restaurant, cuisine or dish" />
+        {isLoggedIn ? (
+          <div className="auth-buttons">
+            <span>{user?.username}</span>
+            <button className="login-btn" onClick={logout}>Logout</button>
+          </div>
+        ) : (
+          <button className="login-btn" onClick={() => navigate("/login")}>Login</button>
+        )}
+      </div>
+
+      <div className="restaurant-header">
+        <h1>Aquarius</h1>
+        <p>North Indian, Chinese, Italian, Beverages, Dessert</p>
+        <button className="primary-btn" onClick={() => setShowBooking(true)}>Book a Table</button>
+      </div>
+
+      <div className="content">
+        {showBooking && (
+          <div className="booking-section">
+            <h2>Reserve a Table</h2>
+            <div className="booking-form">
+              <div className="form-group">
+                <label>Date</label>
+                <input type="date" required />
+              </div>
+              <div className="form-group">
+                <label>Time</label>
+                <input type="time" required />
+              </div>
+              <div className="form-group">
+                <label>Guests</label>
+                <input type="number" min="1" placeholder="Number of guests" required />
+              </div>
+              <button className="primary-btn" onClick={() => navigate("/confirmation")}>Confirm Booking</button>
+              <button className="back-btn" onClick={() => setShowBooking(false)}>Cancel</button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
-
-export default Home;
-const handlesubmit = (e) => {
-        e.preventDefault();
-        setispending(true);
-        const credentials = { email, password, usertype, id };
-        if (!agreed) {
-            setCheckError(true);
-            setispending(false);
-            return;
-        }
-        if (email === "" || password === "" || id === "") {
-            alert("Invalid Credentials");
-            setispending(false);
-            return;
-
-        }
-        if (!(data.find((user) => user.email === email))) {
-            if (password === confirmpass && email !== "" && password !== "" && id !== "") {
-
-                fetch('http://localhost:8000/users', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application.json" },
-                    body: JSON.stringify(credentials)
-                })
-                    .then(() => {
-                        setispending(false);
-
-                        navigate('/');
-                    })
-            }
-
-            else {
-                setwrongpass(true);
-                setispending(false);
-                setconfirmpass('');
-                setpassword('');
-            }
-        }
-        else {
-            setwrongmail(true);
-            setconfirmpass('');
-            setpassword('');
-            setispending(false);
-        }
-
-
-
-    };

@@ -128,3 +128,26 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Tell Django to use your Single Table (AbstractUser) instead of the default one
 CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'accounts.User'
+
+from datetime import timedelta
+
+# Add this to handle the API and Authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+}
+
+# Define token behavior
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+# Ensure CORS is fully open for your local dev environment
+CORS_ALLOW_ALL_ORIGINS = True

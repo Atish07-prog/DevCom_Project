@@ -1,10 +1,14 @@
 from django.urls import path
-from .views import RegisterView, MyTokenObtainPairView
-from rest_framework_simplejwt.views import TokenRefreshView
+from .views import (
+    RegisterView,
+    MyTokenObtainPairView,
+    CheckAvailabilityView,
+    ConfirmBookingView
+)
 
 urlpatterns = [
-    # React will POST to these addresses
-    path('register/', RegisterView.as_view(), name='auth_register'),
-    path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', MyTokenObtainPairView.as_view(), name='login'),
+    path('check-availability/', CheckAvailabilityView.as_view(), name='check-availability'),
+    path('confirm-booking/', ConfirmBookingView.as_view(), name='confirm-booking'),
 ]
