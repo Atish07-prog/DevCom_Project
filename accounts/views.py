@@ -1,20 +1,21 @@
+from datetime import datetime
 from rest_framework import status, generics
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Booking, User
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import RegisterSerializer, MyTokenObtainPairSerializer
+from .serializers import RegisterSerializer, MyTokenObtainPairSerializer, BookingSerializer
 
 
-# 1. Registration View (The one missing in your error)
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [AllowAny]
     serializer_class = RegisterSerializer
 
 
-# 2. Login View (Required for your urls.py)
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
@@ -32,7 +33,7 @@ class CheckAvailabilityView(APIView):
         date = request.data.get('date')
         time_val = request.data.get('time')
 
-        if Booking.objects.filter(date=date, time=time_val).exists():
+        if Booking.objects.filter(date=date, time=time_val,status = "confirmed").exists():
             return Response({
                 "available": False,
                 "message": "This table has been booked. Choose some other time slot."
@@ -53,7 +54,7 @@ class ConfirmBookingView(APIView):
 
         try:
             # Explicit check to prevent duplicate slots
-            if Booking.objects.filter(date=date, time=time_val).exists():
+            if Booking.objects.filter(date=date, time=time_val,status="confirmed").exists():
                 return Response({"error": "This slot is already booked."}, status=status.HTTP_400_BAD_REQUEST)
 
             booking = Booking.objects.create(
@@ -71,3 +72,20 @@ class ConfirmBookingView(APIView):
             # Check your terminal/console to see the exact rejection reason!
             print(f"CRITICAL DATABASE ERROR: {e}")
             return Response({"error": f"Internal Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET"])
+def booking_list(request):
+    bookings = Booking.objects.all().order_by("-created_at")
+    serializer = BookingSerializer(bookings, many=True)
+    return Response(serializer.data)
+
+@api_view(["PATCH"])
+def cancel_booking(request, booking_id):
+    booking = get_object_or_404(Booking, booking_id=booking_id)
+    booking.status = "cancelled"
+    booking.save()
+    return Response(
+        {"message": "Booking cancelled"},
+        status=status.HTTP_200_OK
+    )

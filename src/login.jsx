@@ -38,13 +38,13 @@ const Login = () => {
 
                 // Update context state immediately with the access token
                 if (login) {
-                    login(data.username, data.access);
+                    login(data.username, data.access);//,data.email
                     setispending(false);
 
                 }
 
                 // Redirect based on backend role
-                navigate(data.role === 'admin' ? "/admin-dashboard" : "/");
+                navigate(usrtype==="admin"&&data.role === 'admin' ? "/admin-dashboard" : "/");
             } else {
                 setwrongpass(true);
                 wrongpass(true);

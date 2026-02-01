@@ -4,8 +4,7 @@ import Register from "./register";
 import Home from "./home";
 import ForgotPassword from './Forgotpassword';
 import Confirmation from "./confirmation";
-// 1. Import your new component (create this file if you haven't yet)
-// import AdminDashboard from "./AdminDashboard";
+import AdminDashboard from "./AdminDashboard";
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
           <Route path='/confirmation' element={<Confirmation />}/>
 
           {/* 3. NEW ADMIN ROUTE */}
-          {/* <Route path='/admin-dashboard' element={<AdminDashboard />}/> */}
+          <Route path='/admin-dashboard' element={<AdminDashboard />}/>
         </Routes>
       </Router>
     </div>

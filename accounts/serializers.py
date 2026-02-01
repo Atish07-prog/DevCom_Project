@@ -48,4 +48,21 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['username'] = self.user.username
         data['role'] = self.user.role
 
-        return data
+        return data;
+   
+from rest_framework import serializers
+from .models import Booking
+
+class BookingSerializer(serializers.ModelSerializer):
+    user = serializers.CharField(source="user.username")
+    class Meta:
+        model = Booking
+        fields = [
+            "booking_id",
+            "user",
+            "date",
+            "time",
+            "tables_reserved",
+            "status",
+            "created_at",
+        ]

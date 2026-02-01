@@ -29,6 +29,16 @@ class Booking(models.Model):
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
     booking_id = models.CharField(max_length=20, unique=True, editable=False)
+    
+    status = models.CharField(
+    max_length=20,
+    choices=[
+        ("confirmed", "Confirmed"),
+        ("cancelled", "Cancelled"),
+    ],
+    default="confirmed",
+    )
+
 
     # Matches your frontend inputs
     date = models.DateField()
@@ -37,10 +47,10 @@ class Booking(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        # This is the "Magic" line:
-        # It forces the website to show the slot as booked if the date AND time match
-        unique_together = ('date', 'time')
+    # class Meta:
+    #     # This is the "Magic" line:
+    #     # It forces the website to show the slot as booked if the date AND time match
+    #     unique_together = ('date', 'time')
 
     def save(self, *args, **kwargs):
         if not self.booking_id:
