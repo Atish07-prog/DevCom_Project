@@ -71,7 +71,7 @@ const Register = () => {
             <div className="welcome">
                 <div className="webname">
                     <img src="icon1.png" alt="icon" />
-                    <p>Website Name</p>
+                    <p>TableNest</p>
                 </div>
                 <div className="welcometext">
                     <h2>Join Us</h2>

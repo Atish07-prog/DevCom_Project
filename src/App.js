@@ -5,6 +5,7 @@ import Home from "./home";
 import ForgotPassword from './Forgotpassword';
 import Confirmation from "./confirmation";
 import AdminDashboard from "./AdminDashboard";
+import Profile from "./profile";
 
 function App() {
   return (
@@ -12,14 +13,12 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />}/>
-          {/* 2. Ensure this path matches what you used in Login.js navigate() */}
           <Route path='/loginpage' element={<Login />}/>
           <Route path='/forgotpassword' element={<ForgotPassword />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/confirmation' element={<Confirmation />}/>
-
-          {/* 3. NEW ADMIN ROUTE */}
           <Route path='/admin-dashboard' element={<AdminDashboard />}/>
+          <Route path='/profile' element={<Profile />}/>
         </Routes>
       </Router>
     </div>

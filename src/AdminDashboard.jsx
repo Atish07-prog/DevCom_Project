@@ -7,35 +7,33 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
-  /* ---------------- BOOKINGS STATE ---------------- */
+
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
 
   const [bookings, setBookings] = useState([]);
 
-  /* ---------------- FETCH BOOKINGS ---------------- */
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/bookings/")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Raw data from backend:",data); //added 1 
+        console.log("Raw data from backend:",data); 
         const formatted = data.map((b) => ({
-          id: b.booking_id, //key
-          booking_id : b.booking_id, //display
+          id: b.booking_id,
+          booking_id : b.booking_id,
           username: b.user,
           time: b.time.slice(0, 5),
           guests: b.tables_reserved,
           status: (b.status||"confirmed").toLowerCase(),
           date: b.date,
         }));
-        console.log("formatted bookings:",formatted); //added 2 
+        console.log("formatted bookings:",formatted);
         setBookings(formatted);
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
 
-  /* ---------------- HANDLERS ---------------- */
   const handleLogout = () => {
     logout();
     navigate("/");
@@ -64,10 +62,8 @@ export default function AdminDashboard() {
     (b) => b.date === selectedDate
   );
 
-  /* ---------------- UI ---------------- */
   return (
     <div className="admin-dashboard">
-      {/* HEADER */}
       <div className="admin-header">
         <div>
           <h2>Sea Lounge - The Taj Mahal Palace</h2>
@@ -78,9 +74,8 @@ export default function AdminDashboard() {
         </button>
       </div>
 
-      {/* BOOKINGS */}
       <section className="admin-section">
-        <h3>Bookings</h3>
+        <h3>Bookings On</h3>
 
         <input
           type="date"

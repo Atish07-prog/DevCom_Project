@@ -1,4 +1,4 @@
-/* ========== LAYOUT ========== */
+
 .admin-dashboard {
   padding: 24px;
   background-color: #f5f7fb;
@@ -7,7 +7,6 @@
   color: #1f2937;
 }
 
-/* ========== HEADER ========== */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -46,7 +45,6 @@
   background: #dc2626;
 }
 
-/* ========== SECTION ========== */
 .admin-section {
   background: #ffffff;
   padding: 24px;
@@ -60,7 +58,6 @@
   font-weight: 600;
 }
 
-/* ========== DATE PICKER ========== */
 .date-picker {
   padding: 8px 12px;
   border-radius: 10px;
@@ -74,7 +71,6 @@
   border-color: #6366f1;
 }
 
-/* ========== TABLE ========== */
 .admin-table {
   width: 100%;
   border-collapse: collapse;
@@ -104,7 +100,6 @@
   border-bottom: none;
 }
 
-/* ========== STATUS ========== */
 .status {
   font-weight: 500;
   text-transform: capitalize;
@@ -118,7 +113,6 @@
   color: #dc2626;
 }
 
-/* ========== ACTION BUTTONS ========== */
 .cancel-btn {
   background: #f97316;
   color: white;
@@ -134,7 +128,6 @@
   background: #ea580c;
 }
 
-/* ========== EMPTY STATE ========== */
 .admin-table td[colspan] {
   padding: 20px;
   color: #6b7280;

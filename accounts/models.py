@@ -40,17 +40,13 @@ class Booking(models.Model):
     )
 
 
-    # Matches your frontend inputs
     date = models.DateField()
-    time = models.TimeField()  # Using TimeField for flexibility
+    time = models.TimeField()
     tables_reserved = models.PositiveIntegerField(default=1)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # class Meta:
-    #     # This is the "Magic" line:
-    #     # It forces the website to show the slot as booked if the date AND time match
-    #     unique_together = ('date', 'time')
+   
 
     def save(self, *args, **kwargs):
         if not self.booking_id:

@@ -26,7 +26,6 @@ export default function Restaurant() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Handle Outside Click for Profile Menu
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -37,7 +36,6 @@ export default function Restaurant() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle auto-scroll if redirected from login
   useEffect(() => {
     if (location.state?.redirectToBooking && isLoggedIn) {
       setShowBooking(true);
@@ -62,7 +60,7 @@ export default function Restaurant() {
         body: JSON.stringify({
           date: bookingData.date,
           time: bookingData.time,
-          tables: bookingData.people // Backend expects 'tables' for guest count
+          tables: bookingData.people
         }),
       });
 
@@ -82,10 +80,9 @@ export default function Restaurant() {
 
   return (
     <div className="page">
-      {/* TOP BAR */}
       <div className="top-bar">
         <div className="logo" onClick={() => navigate("/")} style={{ cursor: 'pointer' }}>
-          <img src="logo.png" alt="logo" />
+          <img src="icon1.png" alt="logo" />
           TableNest
         </div>
 
@@ -96,7 +93,6 @@ export default function Restaurant() {
             </div>
             {showProfileMenu && (
               <div className="profile-dropdown">
-                {/* DYNAMIC NAME: This will show 'om' */}
                 <p className="username" style={{ textTransform: 'capitalize' }}>{user}</p>
                 <button className="profile-link" onClick={() => navigate("/profile")}>My Account</button>
                 <button className="logout-btn" onClick={() => { logout(); setShowBooking(false); }}>Logout</button>
@@ -108,7 +104,6 @@ export default function Restaurant() {
         )}
       </div>
 
-      {/* RESTAURANT HEADER */}
       <div className="restaurant-sticky">
         <div className="sticky-left">
           <h1>Sea Lounge - The Taj Mahal Palace</h1>
@@ -144,9 +139,9 @@ export default function Restaurant() {
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.href)
                     .then(() => {
-                      setShowShareCard(false);        // close the share card
-                      setCopiedMessage(true);         // show the "Link copied!" message
-                      setTimeout(() => setCopiedMessage(false), 2000); // hide after 2s
+                      setShowShareCard(false);  
+                      setCopiedMessage(true);      
+                      setTimeout(() => setCopiedMessage(false), 2000); 
                     });
                 }}
               >
@@ -187,7 +182,7 @@ export default function Restaurant() {
         </div>
       </div>
 
-      {/* GALLERY */}
+    
       <div className="gallery">
         <img className="big" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/f3/f3/e1/sea-lounge.jpg?w=1800&h=1000&s=1" alt="Interior-Image" />
         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/fc/06/46/photo1jpg.jpg?w=1400&h=-1&s=1" alt="Interior-Image" />
@@ -209,7 +204,6 @@ export default function Restaurant() {
 
       <div ref={galleryEndRef}></div>
 
-      {/* TABS & CONTENT */}
       {!showBooking ? (
         <>
           <div className="tabs">
@@ -368,8 +362,6 @@ export default function Restaurant() {
     </div>
   );
 }
-
-/* ================= HELPERS ================= */
 
 function BookingSection({ bookingData, setBookingData, onProceed }) {
   const slots = ["17:00:00", "19:00:00", "21:00:00", "23:00:00"];

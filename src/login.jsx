@@ -8,7 +8,7 @@ const Login = () => {
     const [wrongmail, setwrongmail] = useState(false);
     const [pass, setpass] = useState('');
     const [ispending, setispending] = useState(false);
-    const [usrtype, setusrtype] = useState('user'); // Keeps track of Admin/User selection
+    const [usrtype, setusrtype] = useState('user'); 
     const [wrongpass, setwrongpass] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -35,15 +35,12 @@ const Login = () => {
                     return;
                 }
 
-
-                // Update context state immediately with the access token
                 if (login) {
-                    login(data.username, data.access);//,data.email
+                    login(data.username, data.access,data.email);
                     setispending(false);
 
                 }
 
-                // Redirect based on backend role
                 navigate(usrtype==="admin"&&data.role === 'admin' ? "/admin-dashboard" : "/");
             } else {
                 setwrongpass(true);
@@ -62,7 +59,7 @@ const Login = () => {
             <div className="welcome">
                 <div className="webname">
                     <img src="icon1.png" alt="icon" />
-                    <p>Website Name</p>
+                    <p>TableNest</p>
                 </div>
                 <div className="welcometext">
                     <h2>Welcome Back</h2>

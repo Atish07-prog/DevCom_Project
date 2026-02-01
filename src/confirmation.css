@@ -78,10 +78,11 @@
 .email-note {
   color: #666;
   font-size: 14px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .home-btn {
+  margin-top: 15px;
   background-color: #111;
   color: white;
   border: none;

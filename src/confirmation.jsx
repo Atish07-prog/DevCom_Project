@@ -5,8 +5,7 @@ export default function Confirmation() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Retrieve the booking details passed from Home.jsx
-  const { bookingId, date, time, guests } = location.state || {};
+  const { bookingId, date, time, people } = location.state || {};
 
   return (
     <div className="conf-container">
@@ -34,17 +33,21 @@ export default function Confirmation() {
           </div>
           <div className="detail-row">
             <span>Guests</span>
-            <strong>{guests || "2"}</strong>
+            <strong>{people || "2"}</strong>
           </div>
         </div>
 
         <p className="email-note">
           📩 Your booking details have been sent to your registered email.
         </p>
+        <p className="email-note">
+          To cancel your booking please contact at  +91 2266653366
+        </p>
 
         <button className="home-btn" onClick={() => navigate("/")}>
           Back to Home
         </button>
+        
       </div>
     </div>
   );
