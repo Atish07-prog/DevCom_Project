@@ -1,0 +1,38 @@
+1. Creating a New User (Registration)
+When Ananya types her details into your React form and clicks "Sign Up," the data goes on a journey:
+
+Step 1: The Request (React) React sends a package of data (Name, Email, Password, Role) to the URL /api/register/.
+
+Step 2: The Receptionist (urls.py) The URL file sees the address and sends the package to the RegisterView.
+
+Step 3: The Translator (serializers.py) The RegisterView hands the package to the RegisterSerializer.
+
+It checks if the email is valid.
+
+It sees the write_only: True rule and prepares to hide the password.
+
+Step 4: The Security Guard (create_user) Inside the serializer, the create method calls User.objects.create_user. This is the most important part: it hashes (scrambles) Ananya's password so no one can read it.
+
+Step 5: The Warehouse (models.py) Finally, a brand-new row is written into the database. Ananya is now a permanent part of the table you see in your Django Admin!
+
+
+2. Validating a User (Login)
+Now, Ananya comes back the next day to Log In.
+
+Step 1: The Input Ananya enters her Email and Password in React. React sends this to the /api/login/ address.
+
+Step 2: The Swap (MyTokenObtainPairSerializer) The data arrives at your custom login serializer.
+
+It takes the email she typed.
+
+It searches the database: "Do we have an 'Ananya' with this email?"
+
+Once found, it swaps her email for her Username so Django is happy.
+
+Step 3: The Password Check (Validation) The serializer calls super().validate(). Django now takes the password Ananya just typed and compares it to the "scrambled" password in the database.
+
+How? It doesn't unscramble the old password. It scrambles the new password using the same "recipe" and checks if the two scrambled versions match.
+
+Step 4: The Golden Ticket (JWT Token) If they match, the View sends back a Token (a long string of random letters).
+
+Step 5: Access Granted React saves this Token. For the rest of her session, whenever Ananya wants to see a "Member's Only" page, React just shows the Token to Django, and Django lets her in without asking for her password again.

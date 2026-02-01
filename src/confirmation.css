@@ -1,0 +1,99 @@
+.conf-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.conf-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.success-icon {
+  background-color: #2ecc71;
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  margin: 0 auto 20px;
+}
+
+.conf-card h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.conf-message {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.details-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span {
+  color: #888;
+  font-size: 14px;
+}
+
+.detail-row strong {
+  color: #222;
+  font-size: 15px;
+}
+
+.booking-id-text {
+  font-weight: 900 !important;
+}
+
+.email-note {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.home-btn {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.home-btn:hover {
+  background-color: #333;
+}
